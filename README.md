@@ -1,2 +1,1 @@
-ratemystream
-============
+Rate My Stream
