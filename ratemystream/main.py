@@ -17,6 +17,10 @@
 import webapp2
 from google.appengine.ext import db
 
+import jinja2
+import os
+
+jinja_environment = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
 class Streamers(db.Model):
 	streamer = db.StringProperty(required=True) #Name of Streamer. Each streamer will only appear once in the db
@@ -61,20 +65,25 @@ class PasswordHashes(db.Model):
 
 class MainHandler(webapp2.RequestHandler):
 	def get(self):
-		self.response.write('Hello world!<br>')
-		global flag
-		if(flag == 1):
-			oddBrah = Streamers(streamer="TheOddOne",avgRating=5.0)
-			oddBrah.put()
-			regiBad = Streamers(streamer="ReginaId",avgRating=2.0)
-			regiBad.put()
-			wingodeath = Streamers(streamer="WingsOfDeathx",avgRating=5.0)
-			wingodeath.put()
-			flag = 0
+		global jinja_environment
+		title = "Rate My Stream"
+		featured = "Featured Streamers"
+		streamer1 = "OddBrah"
+		streamer2 = "DanceWithWarricks"
+		streamer3 = "LadyOfLuminosity"
+		
+		self.response.write(title)
+		
+		template_values = {
+			'title' : title,
+			'featured' : featured,
+			'streamer1' : streamer1,
+			'streamer2' : streamer2,
+			'streamer3' : streamer3
+		}
+		
+		
+		template = jinja_environment.get_template('index.html')
+		self.response.out.write(template.render(template_values))
 
-		allstreamers = Streamers.all()
-		for each in allstreamers:
-			self.response.write("Name:%s, Rating:%d<br>" % (each.streamer, each.avgRating))
-
-flag = 1
 app = webapp2.WSGIApplication([('/', MainHandler)], debug=True)
