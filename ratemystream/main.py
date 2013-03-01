@@ -72,8 +72,6 @@ class MainHandler(webapp2.RequestHandler):
 		streamer2 = "DanceWithWarricks"
 		streamer3 = "LadyOfLuminosity"
 		
-		self.response.write(title)
-		
 		template_values = {
 			'title' : title,
 			'featured' : featured,
