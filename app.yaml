@@ -1,7 +1,7 @@
 ###############################################################################
 
 # Application Information
-application: gae-skyhook
+application: ratemystream
 version: 1
 
 # Application Parameters
