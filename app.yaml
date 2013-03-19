@@ -1,17 +1,52 @@
-application: zeppelin
+###############################################################################
+
+# Application Information
+application: gae-skyhook
 version: 1
+
+# Application Parameters
+default_expiration: "12d 12h"
 runtime: python27
-api_version: 1
 threadsafe: yes
-
+api_version: 1
 handlers:
-- url: /favicon\.ico
-  static_files: favicon.ico
-  upload: favicon\.ico
 
-- url: .*
+###############################################################################
+
+# Skyhook Elements
+- url: /robots.txt
+  static_files: developer/robots.txt
+  upload: developer/robots.txt
+
+- url: /favicon.ico
+  static_files: templates/favicon.ico
+  upload: templates/favicon.ico
+
+- url: /templates/(.*)/styles/(.*)
+  static_files: templates/\1/styles/\2
+  upload: templates/(.*)/styles/(.*)
+  http_headers:
+    Vary: Accept-Encoding
+
+# Wildcard Root Handler
+- url: /.*
   script: main.app
 
+###############################################################################
+
+# App Engine Redirects
+builtins:
+- admin_redirect: on
+
+# Development Libraries
 libraries:
+- name: jinja2
+  version: latest
+
 - name: webapp2
-  version: "2.5.2"
+  version: latest
+  
+- name: markupsafe
+  version: latest
+
+###############################################################################
