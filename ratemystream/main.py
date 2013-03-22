@@ -69,9 +69,11 @@ class PasswordHashes(db.Model):
 class MainHandler(webapp2.RequestHandler):
 	def get(self):
 
-		self.response.out.write('<div align="center"><br><br><br><br><a href="/addreview">Add a Review</a>')
-		self.response.out.write('<br><a href="/showreviews">Show Reviews</a></div>')
-	
+		template_values = {}
+
+		template = jinja_environment.get_template('index.html')
+		self.response.out.write(template.render(template_values))
+		
 
 class showReviewHandler(webapp2.RequestHandler):
 	def get(self):
