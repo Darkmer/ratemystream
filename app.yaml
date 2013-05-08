@@ -1,7 +1,7 @@
 ###############################################################################
 
 # Application Information
-application: ratemystream
+application: gae-skyhook
 version: 1
 
 # Application Parameters
@@ -15,22 +15,39 @@ handlers:
 
 # Skyhook Elements
 - url: /robots.txt
-  static_files: developer/robots.txt
-  upload: developer/robots.txt
+  static_files: robots.txt
+  upload: robots.txt
 
 - url: /favicon.ico
   static_files: templates/favicon.ico
   upload: templates/favicon.ico
 
-- url: /templates/(.*)/styles/(.*)
-  static_files: templates/\1/styles/\2
-  upload: templates/(.*)/styles/(.*)
+- url: /templates/(.*)/css/(.*)
+  static_files: templates/\1/css/\2
+  upload: templates/(.*)/css/(.*)
   http_headers:
     Vary: Accept-Encoding
 
-# Wildcard Root Handler
+- url: /templates/(.*)/img/(.*)
+  static_files: templates/\1/img/\2
+  upload: templates/(.*)/img/(.*)
+  http_headers:
+    Vary: Accept-Encoding
+
+- url: /templates/(.*)/js/(.*)
+  static_files: templates/\1/js/\2
+  upload: templates/(.*)/js/(.*)
+  http_headers:
+    Vary: Accept-Encoding
+
+# Application Handlers
+- url: /account/.*
+  script: main.app
+  secure: always
+
 - url: /.*
   script: main.app
+  secure: never
 
 ###############################################################################
 

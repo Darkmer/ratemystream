@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+
+{% include "layout/head.html" %}
+
+    <body>
+
+{% include "layout/header.html" %}
+
+        <!-- Content -->{% block content %}{% endblock %}
+{% include "layout/footer.html" %}
+{% include "layout/javascript.html" %}
+
+    </body>
+
+</html>

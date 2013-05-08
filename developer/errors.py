@@ -7,7 +7,7 @@ import logging
 # List of Available Exception Responses
 errors = {
     # 4xx Client Errors
-    401 : ("Unauthorized"  , "Insufficient Level of Access"),
+    401 : ("Unauthorized"  , "Invalid Username or Password"),
     403 : ("Forbidden"     , "Access Prohibited"),
     404 : ("Not Found"     , "The Page Could Not Be Displayed"),
     409 : ("Edit Conflict" , "Entry Already Exists"),
@@ -32,17 +32,15 @@ class ErrorHandler(BaseHandler):
         
         # Retrieve Exception Information and Render
         context = self.get_exception_info(exception)
-        context['Stylesheet'] = "error.css"
-        self.render_response("error.html", **context)
+        self.render_response("views/error.html", **context)
 
     # Retrieve Exception Data From Dictionary
-    def get_exception_info(self, exception):
+    def get_exception_info(self, exception, error_code=501):
         
         # Match Exception Code to Available Key Values
         if hasattr(exception, 'code'):
             if errors.has_key(exception.code):
                 error_code = exception.code
-        else: error_code = 501
 
         # Set Template Values From Exception Response
         context = { 'ErrorCode' : error_code }

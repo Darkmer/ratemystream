@@ -1,0 +1,13 @@
+{% extends "template.html" %}
+{% block content %}
+        <section>
+            {% if User %}
+            <p>Username: {{ User.username }}    </p>
+            <p>Password: {{ User.password }}    </p>
+            <p>  AuthID: {{ User.auth_ids[0] }} </p>
+            <p>    Type: {{ User.type }}        </p>
+            {% elif not User %}
+            <a>Login (or Register) to See Some Data!</a>
+            {% endif %}
+        </section>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "template.html" %}
+{% block content %}
+        <section>
+
+                <form action="{{ uri_for("register") }}" method="post">
+
+                    <input name="email"    type="email"    required placeholder="Email Address"><br>
+                    <input name="username" type="text"     required placeholder="Username"><br>
+                    <input name="password" type="password" required placeholder="Password"><br>
+                    <input name="pconfirm" type="password" required placeholder="Confirm Password"><br>
+                    <input type="submit" value="Register">
+                    <input name="continue" type="hidden"   value="{{ continue_url }}">
+                    
+                </form>
+
+        </section>
+{% endblock %}

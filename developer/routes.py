@@ -7,8 +7,16 @@ app_routes = [] # Routes Listing
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 # Skyhook Application URI Routing Table
 app_route_info = [
-    ( None, hdls.MainHandler, "root", "/", "root"),
-    ( "GET", hdls.BaseHandler, "get", "/base/", "base"),
+
+    # Application Model Views
+    ( None  , hdls.MainHandler   , None , "/"        , "home"  ),
+    ( None  , hdls.SecureHandler , None , "/secure/" , "secure"),
+
+    # User Account Management
+    (  None  , hdls.AccountHandler , None     , "/account/register/" , "register" ),
+    ( "POST" , hdls.AccountHandler , "login"  , "/account/login/"    , "login"    ),
+    ( "GET"  , hdls.AccountHandler , "logout" , "/account/logout/"   , "logout"   ),
+
 ] # HTTP Method , Handler Class , Handler Method , URI , Name
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

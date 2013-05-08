@@ -1,0 +1,15 @@
+{% extends "template.html" %}
+{% block content %}
+        <section>
+        	{% if user_data[0] == True %}
+        	<p>Registration Successful!  Please click <a href="{{ continue_url }}">here</a> if your browser does not automatically redirect you in <span id="countdown">{{ delay }}</span> seconds.</p>
+			<meta http-equiv="refresh" content="{{ delay }}; url='{{ continue_url }}">  
+			{% elif user_data[1][0] == "email" %}
+			<p>We're sorry, but that email address is already in use!</p>
+			{% elif user_data[1][0] == "username" or user_data[1][0] == "auth_id" %}
+			<p>We're sorry, but that username has already been claimed!</p>
+			{% else %}
+			<p>We're sorry, but your passwords don't match!</p>
+			{% endif %}
+        </section>
+{% endblock %}
