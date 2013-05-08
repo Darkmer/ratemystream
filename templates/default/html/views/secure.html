@@ -1,0 +1,14 @@
+{% extends "template.html" %}
+{% block content %}
+        <section>
+            {% if User %}
+            <p>Congratulations, you've reached a secure page!</p>
+            <h1>Username: {{ User.username }}    </p>
+            <h1>Password: {{ User.password }}    </p>
+            <h2>  AuthID: {{ User.auth_ids[0] }} </p>
+            <h2>    Type: {{ User.type }}        </p>
+            {% elif not User %}
+            <p>This should never be visible ...</p>
+            {% endif %}
+        </section>
+{% endblock %}

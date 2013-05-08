@@ -1,0 +1,23 @@
+        <!-- Footer -->
+        <footer>
+            
+            <nav>
+                {% if not User %}
+                <form action="{{ uri_for("login") }}" method="post">
+
+                    <input name="username" type="text"     required placeholder="Username"><br>
+                    <input name="password" type="password" required placeholder="Password"><br>
+                    <span>Remember  <input name="remember" type="checkbox" value="True"></span><br>
+                    
+                    <a href="{{ uri_for("register") }}?continue={{ continue_url }}">Register</a>
+                    <input name="submit"   type="submit"   value="Login">
+                    <input name="continue" type="hidden"   value="{{ continue_url }}">
+                    
+                </form>
+                {% else %}
+                <a href="{{ uri_for("logout") }}?continue={{ continue_url }}">Logout</a>
+                {% endif %}
+            </nav>
+        
+        </footer><div id="footer"></div>
+        

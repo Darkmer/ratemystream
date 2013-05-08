@@ -1,0 +1,74 @@
+@import url("layout/normalize.css");
+
+html { height: 100%; }
+body 
+{
+    position: relative;
+    margin: 0px auto;
+    min-height: 100%;
+
+    font-family: 'Avenir Next', Tahoma, Helvetica;
+    background-image: url("../img/texture.png");
+    background-color: rgba(240,240,240,1);  
+}
+
+header
+{
+    position: fixed;
+    top: 0em; height: 2.5em;
+    left: 0em; width: 100%;
+    display: table;
+    padding-left: 1em;
+
+    background-color: rgba(53,140,232,1);
+    background: -webkit-linear-gradient(top, 
+        rgba(73,155,234,1) 0%,
+        rgba(32,124,229,1) 100%);
+    box-shadow: 0px 3px 6px grey;
+
+} #header { height: 2.5em; }
+
+header #logo
+{
+    display: table-cell; 
+    vertical-align: middle; 
+    text-decoration: none;
+    font-size: 1.5em;
+    color: rgba(245,245,245,1);
+}
+header li { display: inline; }
+header ul { float: right; margin-right: 2em; }
+header .social
+{
+    
+}
+
+footer
+{
+    position: absolute; 
+    bottom: 0em; height: auto;
+    left: 0em;    width: 100%;
+
+    background-image: url("../img/texture.png");
+    background-color: rgba(125,125,125,1);
+    box-shadow: 0px 3px 6px black inset;
+    
+} #footer { height: 15em; }
+
+footer nav
+{
+    width: 960px;
+    margin: 1em auto;
+}
+
+section
+{
+    bottom: 0em;
+    margin: 2em auto;
+    min-height: 100%;
+    min-width: 200px;
+    max-width: 720px;
+
+
+    background-color: rgba(250,245,205,1);
+}

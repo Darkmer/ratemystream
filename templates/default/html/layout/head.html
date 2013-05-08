@@ -7,7 +7,7 @@
         <meta charset="UTF-8">
 
         <!-- Stylesheets -->
-        <link rel="stylesheet" type="text/css" href="{{ stylesheet_path }}/template.css"/> {% if Stylesheet %}
-        <link rel="stylesheet" type="text/css" href="{{ stylesheet_path }}/{{ Stylesheet }}"/>     {% endif %}
+        <link rel="stylesheet" type="text/css" href="{{ stylesheet_path }}/template.css"/>      {% if Stylesheet != "template.css" %}
+        <link rel="stylesheet" type="text/css" href="{{ stylesheet_path }}/{{ Stylesheet }}"/>  {% endif %}
 
     </head>
